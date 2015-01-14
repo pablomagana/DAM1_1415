@@ -3,12 +3,10 @@ public class matriu {
 	private char sopaDeLletres[][];
     private final int FILES=5;
     private final int COLUMNES=6;
-    
     public matriu(){
     	sopaDeLletres= new char[FILES][COLUMNES];
     }
 	public static void main(String[] args) {
-	
 		matriu m = new matriu();
 		m.ompliMatriuDeLletres();
     	m.mostraMatriuDeLletres();
