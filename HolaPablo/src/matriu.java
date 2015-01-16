@@ -1,34 +1,36 @@
-import javax.swing.JOptionPane;
 public class matriu {
-	private char sopaDeLletres[][];
-    private final int FILES=5;
-    private final int COLUMNES=6;
+	private static char matriua[][];
+    private static final int FILES=15;
+    private static final int COLUMNES=15;
+    private static String paraules[]={"IVAN","HA","FOTUT","EL","MAC"};
+    private char lletres[]={'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
     public matriu(){
-    	sopaDeLletres= new char[FILES][COLUMNES];
+    	matriua= new char[FILES][COLUMNES];
+    	
     }
 	public static void main(String[] args) {
-		matriu m = new matriu();
-		m.ompliMatriuDeLletres();
-    	m.mostraMatriuDeLletres();
-
+		inicializaMatriu();
+		mostraMatriu();
 	}
-	public void ompliMatriuDeLletres(){
-		char lletra='A';
+	public static void inicializaMatriu(){
+		for(int i=0;i<FILES;i++){
+			for(int j=0;j<COLUMNES;j++){
+				matriua[i][j]='*';
+			}
+		}
+	}
+	public static void ompliMatriu(){
+		char lletra=0;
         for(int i=0;i<FILES;i++){
             for(int j=0;j<COLUMNES;j++){
-            	if(lletra<91){
-                sopaDeLletres[i][j]=lletra++;
-            	}else{
-            		sopaDeLletres[i][j]=' ';
-            	}
-            }
+                matriua[i][j]=RamndomNumber;         	
+           	}
         }
 	}
-	 public void mostraMatriuDeLletres(){
+	 public static void mostraMatriu(){
 	        for(int i=0;i<FILES;i++){
 	            for(int j=0;j<COLUMNES;j++){
-	                System.out.print(""+sopaDeLletres[i][j]+" ");
-	                JOptionPane.showMessageDialog(null,""+sopaDeLletres[i][j]+" ");
+	                System.out.print(""+matriua[i][j]+" ");
 	            }
 	            System.out.println("");
 	        }
