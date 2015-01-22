@@ -23,7 +23,7 @@ public class matriu {
 		char lletra=0;
         for(int i=0;i<FILES;i++){
             for(int j=0;j<COLUMNES;j++){
-                matriua[i][j]=RamndomNumber;         	
+                matriua[i][j]=lletra;
            	}
         }
 	}
