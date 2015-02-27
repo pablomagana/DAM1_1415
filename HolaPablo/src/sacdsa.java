@@ -27,7 +27,7 @@ public class sacdsa {
 			letra=textoACodificar.charAt(i);
 			for(int j=0;j<letras.length;j++){
 				if(letra==letras[j]){
-					textoCodificado=textoCodificado+letras[j];
+					textoCodificado=textoCodificado+codigos[j];
 				}
 			}
 		}
