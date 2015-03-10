@@ -12,6 +12,7 @@ String textoCodificado="";
 	public  void codificador(){
 		
 		grupo=3;
+		fila=8;
 		for(int g=0;g<(letras.length)/2;g++){
 			if(grupo==3){
 				codigos[g]=(fila*10)+grupo;
@@ -30,6 +31,7 @@ String textoCodificado="";
 				grupo=2;
 			}else{
 				codigos[g]=(fila*10)+grupo;
+				
 				grupo=4;
 				fila--;
 			}
@@ -47,6 +49,7 @@ String textoCodificado="";
 	
 	public String codificar(String aCodificar){
 		codificador();
+		textoCodificado="";
 		textoNoCodificado=aCodificar;
 		for(int i=0;i<textoNoCodificado.length();i++){
 			letra=textoNoCodificado.charAt(i);
@@ -56,7 +59,7 @@ String textoCodificado="";
 				}
 			}
 		}
-		//System.out.println("el texto codificado es: "+textoCodificado);
+		System.out.println("el texto codificado es: "+textoCodificado);
 		return textoCodificado;
 	}
 	
@@ -86,7 +89,7 @@ String textoCodificado="";
 			}
 		}
 		
-		//System.out.println("El texto descodificado es:"+textoNoCodificado);
+		System.out.println("El texto descodificado es:"+textoNoCodificado);
 		return textoNoCodificado;
 	}
 }
