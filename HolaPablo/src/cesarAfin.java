@@ -13,14 +13,15 @@ public class cesarAfin {
 	public String encriptador(int a,int b,String texto){
 		this.textoBase=texto;
 		this.textoADevolver="";
-		for(int i=0;i<lletres.length;i++){
-			c=((a*i)+b);
-			desordenatNombres[i]=c;
-		}
+		//for(int i=0;i<lletres.length;i++){
+			//c=((a*i)+b)%27;
+			//desordenatNombres[i]=c;
+		//}
 		for(int i=0;i<textoBase.length();i++){
 			for(int j=0;j<lletres.length;j++){
 				if(textoBase.charAt(i)==lletres[j]){
-					textoADevolver=textoADevolver+lletres[desordenatNombres[j]];
+					c=((a*j)+b)%27;
+					textoADevolver=textoADevolver+lletres[c];
 				};
 			}
 		}
@@ -35,8 +36,11 @@ public class cesarAfin {
 		for(int i=0;i<textoBase.length();i++){
 			for(int j=0;j<lletres.length;j++){
 				if(textoBase.charAt(i)==lletres[j]){
-					x=((j-b)*(a-1))%27;
+					c=((a*j)+b)%27;
+					x=((c-b)*(1/a))%27;
+					System.out.println("c="+c+",x"+x);
 					textoADevolver=textoADevolver+lletres[x];
+					
 				}
 			}
 		}

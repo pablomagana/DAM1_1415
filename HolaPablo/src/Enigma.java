@@ -13,7 +13,7 @@ public class Enigma {
 	cesarAfin cesarafin=new cesarAfin();
 	
 	cesarafin.encriptador(a, b, texto);
-	String texto2=JOptionPane.showInputDialog(null, "escribe la frase a codificar");
+	String texto2=JOptionPane.showInputDialog(null, "escribe la frase a decodificar");
 	cesarafin.desEncriptador(a, b, texto2);
 	}
 
