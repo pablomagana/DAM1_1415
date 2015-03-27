@@ -18,7 +18,6 @@ public class CoPablo extends JFrame implements ActionListener{
 	Pablo p=new Pablo();
 	public static void main(String[] args){
 		new CoPablo();
-		//Pablo p=new Pablo();//esta linea no funciona
 	}
 	
 	public CoPablo(){
