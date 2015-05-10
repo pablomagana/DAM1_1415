@@ -3,7 +3,10 @@ package modelo;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import com.mysql.jdbc.Connection;
+
 public class conexionBD {
+	
 //datos de la conexion
 	static final String mysql_controler="com.mysql.jdbc.Driver";
 
@@ -12,6 +15,9 @@ public class conexionBD {
 	private String basedatos;
 	private String user;
 	private String password;
+	
+//conexion
+ 	private Connection conexion = null;
 	
 	public conexionBD(String host,String basedatos,String user,String password){
 		this.host=host;
@@ -24,14 +30,19 @@ public class conexionBD {
 		try{
 			Class.forName(mysql_controler);
 			//conectar a bd
-			DriverManager.getConnection("jdbc:mysql://"+this.host+"/"+this.basedatos,this.user,this.password);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}catch(ClassNotFoundException e){
-			e.printStackTrace();
+			conexion=(Connection) DriverManager.getConnection("jdbc:mysql://"+this.host+"/"+this.basedatos,this.user,this.password);
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+			return false;
+		}catch(ClassNotFoundException e2){
+			e2.printStackTrace();
 			return false;
 		}
 		return true;
+	}
+	
+	public Connection getConexion(){
+		return this.conexion;
 	}
 
 }
