@@ -46,11 +46,11 @@ public class panelPrincipal extends JPanel {
 		add(btnNewButton_1);
 		
 		JButton botonjuegos = new JButton("Juegos >");
-		botonjuegos.setBounds(233, 42, 171, 23);
+		botonjuegos.setBounds(162, 47, 171, 23);
 		add(botonjuegos);
 		
 		JButton botonperfil = new JButton("Perfil >");
-		botonperfil.setBounds(233, 81, 171, 23);
+		botonperfil.setBounds(162, 81, 171, 23);
 		add(botonperfil);
 
 	}

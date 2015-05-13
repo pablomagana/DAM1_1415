@@ -11,7 +11,7 @@ public class act extends JFrame {
 	public act() {
 		setTitle("actividad 5");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 500, 400);
+		setBounds(100, 100, 390, 400);
 		
 		JMenuBar menu = new JMenuBar();
 		setJMenuBar(menu);//aplicar menu

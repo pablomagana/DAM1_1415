@@ -1,5 +1,9 @@
 package modelo;
 
-public class usuarios {
+import modelo.conexionBD;
 
+public class usuarios {
+	public usuarios(){
+		
+	}
 }
