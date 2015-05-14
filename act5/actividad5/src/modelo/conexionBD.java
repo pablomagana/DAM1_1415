@@ -1,9 +1,9 @@
 package modelo;
 
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import com.mysql.jdbc.Connection;
 
 public class conexionBD {
 	
@@ -30,7 +30,7 @@ public class conexionBD {
 		try{
 			Class.forName(mysql_controler);
 			//conectar a bd
-			conexion=(Connection) DriverManager.getConnection("jdbc:mysql://"+this.host+"/"+this.basedatos,this.user,this.password);
+			conexion= DriverManager.getConnection("jdbc:mysql://"+this.host+"/"+this.basedatos,this.user,this.password);
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 			return false;

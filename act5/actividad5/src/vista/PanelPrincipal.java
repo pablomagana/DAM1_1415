@@ -13,19 +13,19 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 
-public class panelPrincipal extends JPanel {
+public class PanelPrincipal extends JPanel {
 	private JPasswordField contrasena;
 
 	/**
-	 * Create the panel.
+	 * Se crea el panel que se aplicara a la ventana principal.
 	 */
-	public panelPrincipal() {
+	public PanelPrincipal() {
 		setLayout(null);
 		
-		JLabel label = new JLabel("New label");
-		label.setIcon(new ImageIcon("C:\\Users\\pablo\\Pictures\\ROBOT\\ROBOT4.jpg"));
-		label.setBounds(28, 42, 100, 100);
-		add(label);
+		JLabel foto = new JLabel("New label");
+		foto.setIcon(new ImageIcon("C:\\Users\\pablo\\Pictures\\ROBOT\\ROBOT4.jpg"));
+		foto.setBounds(28, 42, 100, 100);
+		add(foto);
 		
 		JComboBox usuario = new JComboBox();
 		usuario.setModel(new DefaultComboBoxModel(new String[] {"pamaub", "unpama", "maubpa"}));
