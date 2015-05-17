@@ -16,8 +16,9 @@ public class conexionBD {
 	private String user;
 	private String password;
 	
+
 //conexion
- 	private Connection conexion = null;
+ 	private static Connection conexion = null;
 	
 	public conexionBD(String host,String basedatos,String user,String password){
 		this.host=host;
@@ -25,11 +26,12 @@ public class conexionBD {
 		this.user=user;
 		this.password=password;
 	}
-	private boolean connectBD(){
+	//crea una conexion con la bd
+	public boolean connectBD(){
 		//carga controlador para la conexion else return false
 		try{
 			Class.forName(mysql_controler);
-			//conectar a bd
+		//conectar a bd
 			conexion= DriverManager.getConnection("jdbc:mysql://"+this.host+"/"+this.basedatos,this.user,this.password);
 		} catch (SQLException e1) {
 			e1.printStackTrace();
@@ -41,8 +43,8 @@ public class conexionBD {
 		return true;
 	}
 	
-	public Connection getConexion(){
-		return this.conexion;
+	public static Connection getConexion(){
+		return conexion;
 	}
 
 }

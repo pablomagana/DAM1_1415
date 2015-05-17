@@ -2,19 +2,27 @@ package vista;
 
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
 import java.awt.Canvas;
+
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JCheckBoxMenuItem;
+
 import java.awt.Choice;
 import java.awt.Color;
+import java.util.Iterator;
+
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 
+import modelo.usuarios;
+
 public class PanelPrincipal extends JPanel {
 	private JPasswordField contrasena;
+	private usuarios usuariobd=new usuarios();
 
 	/**
 	 * Se crea el panel que se aplicara a la ventana principal.
@@ -28,7 +36,13 @@ public class PanelPrincipal extends JPanel {
 		add(foto);
 		
 		JComboBox usuario = new JComboBox();
-		usuario.setModel(new DefaultComboBoxModel(new String[] {"pamaub", "unpama", "maubpa"}));
+
+		//creamos un iterator con el resultado de la bd que nos permite recorrer tdos los usuarios
+		Iterator<String> recorredor=usuariobd.getUsuarios().iterator();
+		while(recorredor.hasNext()){
+			//añadimos cada valor del iterator al comboBox
+			usuario.addItem(recorredor.next().toString());
+		}
 		usuario.setBounds(28, 173, 100, 20);
 		add(usuario);
 		
