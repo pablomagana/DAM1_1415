@@ -43,6 +43,8 @@ public class PanelPrincipal extends JPanel {
 			//añadimos cada valor del iterator al comboBox
 			usuario.addItem(recorredor.next().toString());
 		}
+		//fin iterator
+		
 		usuario.setBounds(28, 173, 100, 20);
 		add(usuario);
 		
