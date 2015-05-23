@@ -4,13 +4,19 @@ import javax.swing.JPanel;
 import javax.swing.JComboBox;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+import java.util.Iterator;
+
 import modelo.datos;
+import modelo.policia;
 
 public class panelPrincipal extends JPanel {
-	private datos usuarios=new datos();
+	private datos datosusuarios=new datos();
 	private JPasswordField passwordField;
+	private Iterator<String[]> user;
 
 	/**
 	 * Create the panel.
@@ -34,7 +40,19 @@ public class panelPrincipal extends JPanel {
 		JButton btnNewButton = new JButton("Log in");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				usuarios.getUsuarios();
+				String password=new String(passwordField.getPassword());
+				user=datosusuarios.getUsuarios().iterator();
+				String nombreuser;
+				String passuser;
+				while(user.hasNext()){
+					nombreuser=user.next()[0];
+					passuser=user.next()[1];
+					if(nombreuser==usuarios.getSelectedItem() && passuser==password){
+						policia.usuariovalido=nombreuser;
+						policia.contrasenavalida=passuser;
+						
+					}
+				}
 			}
 		});
 		btnNewButton.setBounds(32, 156, 139, 23);
