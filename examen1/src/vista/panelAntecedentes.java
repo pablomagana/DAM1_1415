@@ -24,7 +24,7 @@ public class panelAntecedentes extends JPanel {
 		add(lblNewLabel_1);
 		
 		JEditorPane editorPane = new JEditorPane();
-		editorPane.setBounds(32, 63, 349, 194);
+		editorPane.setBounds(32, 63, 349, 149);
 		add(editorPane);
 		
 		JButton btnNewButton = new JButton("Salvar >>");
@@ -32,7 +32,7 @@ public class panelAntecedentes extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton.setBounds(32, 278, 89, 23);
+		btnNewButton.setBounds(32, 241, 89, 23);
 		add(btnNewButton);
 
 	}

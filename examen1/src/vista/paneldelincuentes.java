@@ -7,6 +7,8 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
+import modelo.datos;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.ScrollPane;
@@ -20,7 +22,7 @@ public class paneldelincuentes extends JPanel {
 	private JTextField textField_3;
 	private JTextField textField_4;
 	private JTextField textField_5;
-
+	private datos datosObj=new datos();
 	/**
 	 * Create the panel.
 	 */
@@ -93,12 +95,14 @@ public class paneldelincuentes extends JPanel {
 		textField_5.setBounds(236, 253, 142, 20);
 		panel.add(textField_5);
 		textField_5.setColumns(10);
+		String[] delincuentesnombres={"delincuente 1","delincuente 2","delincuente 3","delincuente 4","delincuente 5","delincuente 6","delincuente 7","delincuente 8","delincuente 9","delincuente 10"};
 		
-		JList list = new JList();
+		JList list = new JList(delincuentesnombres);
+		
 		list.setBounds(0, 0, 1, 1);
 		
 		JScrollPane scrollPane = new JScrollPane(list);
-		scrollPane.setBounds(10, 23, 164, 284);
+		scrollPane.setBounds(10, 11, 164, 296);
 		panel.add(scrollPane);
 		
 	}

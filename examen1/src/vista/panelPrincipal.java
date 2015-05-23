@@ -6,8 +6,10 @@ import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import modelo.datos;
 
 public class panelPrincipal extends JPanel {
+	private datos usuarios=new datos();
 	private JPasswordField passwordField;
 
 	/**
@@ -32,7 +34,7 @@ public class panelPrincipal extends JPanel {
 		JButton btnNewButton = new JButton("Log in");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				usuarios.getUsuarios();
 			}
 		});
 		btnNewButton.setBounds(32, 156, 139, 23);
