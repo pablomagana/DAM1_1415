@@ -8,6 +8,7 @@ import java.awt.BorderLayout;
 import javax.swing.JMenuItem;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import java.awt.CardLayout;
@@ -17,6 +18,7 @@ import java.awt.event.ActionListener;
 import javax.swing.SwingConstants;
 
 import modelo.datos;
+import modelo.policia;
 
 public class principal extends JFrame{
 	private JPanel card;
@@ -47,7 +49,6 @@ public class principal extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				CardLayout c=(CardLayout) card.getLayout();
 				c.show(card, "panel1");
-				
 			}
 		});
 		
@@ -55,9 +56,12 @@ public class principal extends JFrame{
 		menuBar.add(delincuentes);
 		delincuentes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CardLayout c=(CardLayout) card.getLayout();
-				c.show(card, "panel2");
-				
+				if(policia.usuariovalido!=null && policia.contrasenavalida!=null){
+					CardLayout c=(CardLayout) card.getLayout();
+					c.show(card, "panel2");
+				}else{
+					JOptionPane.showMessageDialog(null, "NO te has logeado correctamente");
+				}
 			}
 		});
 		

@@ -18,7 +18,10 @@ import modelo.policia;
 public class panelPrincipal extends JPanel {
 	
 	private JPasswordField passwordField;
+	private String password=null;
 	private Iterator<String[]> user;
+	private JButton logout;
+	private JButton login;
 
 	/**
 	 * Create the panel.
@@ -43,30 +46,50 @@ public class panelPrincipal extends JPanel {
 		passwordField.setBounds(32, 78, 139, 20);
 		panel.add(passwordField);
 		
-		JButton btnNewButton = new JButton("Log in");
-		btnNewButton.addActionListener(new ActionListener() {
+		login = new JButton("Log in");
+		login.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String password=new String(passwordField.getPassword());
+				if(passwordField.getPassword()!=null)password=new String(passwordField.getPassword());
 				user=datosusuarios.getUsuarios().iterator();
-				
-				while(user.hasNext()){
-					String[] linea=user.next();
-					if(linea[0].equals(usuarios.getSelectedItem().toString())  && linea[1].equals(password)){
-						policia.usuariovalido=linea[0];
-						policia.contrasenavalida=linea[1];
-						CardLayout ca=(CardLayout) card.getLayout();
-						ca.show(card, "panel2");
-						break;
+				if(!password.equals(null)){
+					while(user.hasNext()){
+						String[] linea=user.next();
+						if(linea[0].equals(usuarios.getSelectedItem().toString())  && linea[1].equals(password)){
+							policia.usuariovalido=linea[0];
+							policia.contrasenavalida=linea[1];
+							usuarios.setEnabled(false);
+							passwordField.setEnabled(false);
+							login.setEnabled(false);
+							logout.setEnabled(true);
+							//CardLayout ca=(CardLayout) card.getLayout();
+							//ca.show(card, "panel2");
+						}
 					}
+				}else{
+					JOptionPane.showMessageDialog(null, "Error! Falta introducir contraseña");
 				}
+				
 			}
 		});
-		btnNewButton.setBounds(32, 156, 139, 23);
-		panel.add(btnNewButton);
+		login.setBounds(32, 156, 139, 23);
+		panel.add(login);
 		
-		JButton btnNewButton_1 = new JButton("Log out");
-		btnNewButton_1.setBounds(32, 189, 139, 23);
-		panel.add(btnNewButton_1);
+		logout = new JButton("Log out");
+		logout.setEnabled(false);
+		logout.setBounds(32, 189, 139, 23);
+		logout.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				policia.usuariovalido=null;
+				policia.contrasenavalida=null;
+				usuarios.setEnabled(true);
+				passwordField.setEnabled(true);
+				logout.setEnabled(false);
+				login.setEnabled(true);
+			}
+		});
+		panel.add(logout);
 
 	}
 
