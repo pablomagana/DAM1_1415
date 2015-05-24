@@ -18,25 +18,26 @@ public class datos {
 		this.conexion=conexionBD.getConexion();
 	}
 	
-	public ArrayList<String[]> getAllDelincuentes(){
+	public ArrayList<String[]> getAllDelincuentes(String nombreDelincuenteBuscado){
 		//creo arrayList para almacenar resultado de la consulta
 		ArrayList<String[]> usuarios=new ArrayList<String[]>();
 		
 		try{
 			//sentencia sql
 			this.sql = this.conexion.createStatement();
-			this.resultados = sql.executeQuery("select * from delincuentes");
+			this.resultados = sql.executeQuery("select * from delincuentes where nombre='"+nombreDelincuenteBuscado+"'");
 					
 			//Recorremos los resultados y los almacenamos en un ArrayList
-			String[] delincuente=new String[7];
+			
 			
 			while( resultados.next() ) {
+				String[] delincuente=new String[7];
 				delincuente[0]=resultados.getString("nombre");
 				delincuente[1]=resultados.getString("edad");
 				delincuente[2]=resultados.getString("sexo");
 				delincuente[3]=resultados.getString("nacionalidad");
 				delincuente[4]=resultados.getString("direccion");
-				delincuente[5]=resultados.getString("pobcion");
+				delincuente[5]=resultados.getString("poblacion");
 				delincuente[6]=resultados.getString("antecedentes");
 				usuarios.add(delincuente);
 			}
@@ -94,8 +95,9 @@ public class datos {
 			this.resultados = sql.executeQuery("select * from usuarios");
 					
 			//Recorremos los resultados y los almacenamos en un ArrayList
-			String[] delincuente=new String[2];
+			
 			while( resultados.next() ) {
+				String[] delincuente=new String[2];
 				delincuente[0]=resultados.getString("usuario");
 				delincuente[1]=resultados.getString("pass");
 				usuarios.add(delincuente);
@@ -114,5 +116,24 @@ public class datos {
 			}
 		}
 		return usuarios;
+	}
+	public void actualizarAntecedentes(String antecedentes,String nombredelincuente){
+		try{
+			//sentencia sql
+			this.sql = this.conexion.createStatement();
+			sql.executeUpdate("update delincuentes set antecedentes='"+antecedentes+"' where nombre='"+nombredelincuente+"'");
+					
+						
+		}catch( SQLException excepcionSql ) {
+			excepcionSql.printStackTrace();
+		}finally{
+			try{
+				sql.close();
+			}
+			catch( SQLException excepcionSql ) 
+			{
+				excepcionSql.printStackTrace();
+			}
+		}
 	}
 }

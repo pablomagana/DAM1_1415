@@ -5,35 +5,37 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JEditorPane;
 import javax.swing.JButton;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class panelAntecedentes extends JPanel {
+import modelo.datos;
 
-	/**
-	 * Create the panel.
-	 */
-	public panelAntecedentes() {
+public class panelAntecedentes extends JPanel {
+	JEditorPane cuadroantecedentes;
+	
+	
+	public panelAntecedentes(String antecedentes,datos datos,String nombredelincuente) {
 		setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("New label");
-		add(lblNewLabel);
+		JLabel antecedentesText = new JLabel("Antecedentes");
+		antecedentesText.setBounds(32, 27, 89, 14);
+		add(antecedentesText);
 		
-		JLabel lblNewLabel_1 = new JLabel("Antecedentes");
-		lblNewLabel_1.setBounds(32, 27, 89, 14);
-		add(lblNewLabel_1);
+		cuadroantecedentes = new JEditorPane();
+		cuadroantecedentes.setBounds(32, 63, 349, 149);
+		cuadroantecedentes.setText(antecedentes);
+		add(cuadroantecedentes);
 		
-		JEditorPane editorPane = new JEditorPane();
-		editorPane.setBounds(32, 63, 349, 149);
-		add(editorPane);
-		
-		JButton btnNewButton = new JButton("Salvar >>");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton salvar = new JButton("Salvar >>");
+		salvar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				datos.actualizarAntecedentes(cuadroantecedentes.getText(), nombredelincuente);
 			}
 		});
-		btnNewButton.setBounds(32, 241, 89, 23);
-		add(btnNewButton);
+		salvar.setBounds(32, 241, 89, 23);
+		add(salvar);
 
 	}
+	
 }

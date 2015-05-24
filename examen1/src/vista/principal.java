@@ -16,20 +16,24 @@ import java.awt.event.ActionListener;
 
 import javax.swing.SwingConstants;
 
+import modelo.datos;
+
 public class principal extends JFrame{
 	private JPanel card;
+	private datos datosusuarios=new datos();
 	public principal(){
 		getContentPane().setLayout(null);
-		setTitle("actividad 5");
+		setTitle("Delincuentes Catarroja");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 431, 382);
 		
-		JPanel panel1=new panelPrincipal();
-		JPanel panel2=new paneldelincuentes();
+		
 		card=new JPanel();
 		getContentPane().add(card);
 		card.setBounds(0, 23, 422, 320);
 		card.setLayout(new CardLayout(0, 0));
+		JPanel panel1=new panelPrincipal(card,datosusuarios);
+		JPanel panel2=new paneldelincuentes(card,datosusuarios);
 		card.add(panel1,"panel1");
 		card.add(panel2,"panel2");
 		

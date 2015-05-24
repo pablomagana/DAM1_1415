@@ -6,69 +6,75 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import modelo.datos;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.CardLayout;
 import java.awt.ScrollPane;
 import java.awt.Scrollbar;
 import java.awt.List;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class paneldelincuentes extends JPanel {
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private datos datosObj=new datos();
+	private JTextField nombredelincuente;
+	private JTextField edaddelincuente;
+	private JTextField nacionalidaddelincuente;
+	private JTextField sexodelincuente;
+	private JTextField direcciondelincuente;
+	private JTextField poblaciondelincuente;
+	private datos datosObj;
+	private Iterator<String[]> infodelincuentes;
+	private String[] delincuente;
+	private JPanel panel3;
 	/**
 	 * Create the panel.
 	 */
-	public paneldelincuentes() {
+	public paneldelincuentes(JPanel card,datos datos) {
 		setLayout(null);
-		
+		this.datosObj=datos;
 		JPanel panel = new JPanel();
 		panel.setBounds(10, 11, 440, 328);
 		add(panel);
 		panel.setLayout(null);
 		
-		textField = new JTextField();
-		textField.setBounds(233, 36, 145, 20);
-		panel.add(textField);
-		textField.setColumns(10);
+		nombredelincuente = new JTextField();
+		nombredelincuente.setEditable(false);
+		nombredelincuente.setBounds(236, 36, 145, 20);
+		panel.add(nombredelincuente);
+		nombredelincuente.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(236, 89, 66, 20);
-		panel.add(textField_1);
-		textField_1.setColumns(10);
+		edaddelincuente = new JTextField();
+		edaddelincuente.setEditable(false);
+		edaddelincuente.setBounds(236, 89, 66, 20);
+		panel.add(edaddelincuente);
+		edaddelincuente.setColumns(10);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(236, 145, 142, 20);
-		panel.add(textField_2);
-		textField_2.setColumns(10);
+		nacionalidaddelincuente = new JTextField();
+		nacionalidaddelincuente.setEditable(false);
+		nacionalidaddelincuente.setBounds(236, 145, 142, 20);
+		panel.add(nacionalidaddelincuente);
+		nacionalidaddelincuente.setColumns(10);
 		
-		textField_3 = new JTextField();
-		textField_3.setBounds(317, 89, 61, 20);
-		panel.add(textField_3);
-		textField_3.setColumns(10);
+		sexodelincuente = new JTextField();
+		sexodelincuente.setEditable(false);
+		sexodelincuente.setBounds(317, 89, 61, 20);
+		panel.add(sexodelincuente);
+		sexodelincuente.setColumns(10);
 		
-		textField_4 = new JTextField();
-		textField_4.setBounds(236, 199, 142, 20);
-		panel.add(textField_4);
-		textField_4.setColumns(10);
-		
-		JButton btnNewButton = new JButton("Antecedetes");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnNewButton.setBounds(236, 284, 142, 23);
-		panel.add(btnNewButton);
+		direcciondelincuente = new JTextField();
+		direcciondelincuente.setEditable(false);
+		direcciondelincuente.setBounds(236, 199, 142, 20);
+		panel.add(direcciondelincuente);
+		direcciondelincuente.setColumns(10);
 		
 		JLabel lblNombre = new JLabel("Nombre");
-		lblNombre.setBounds(233, 11, 46, 14);
+		lblNombre.setBounds(233, 11, 142, 14);
 		panel.add(lblNombre);
 		
 		JLabel lblEdad = new JLabel("Edad");
@@ -80,30 +86,60 @@ public class paneldelincuentes extends JPanel {
 		panel.add(lblSexo);
 		
 		JLabel lblNacionalidad = new JLabel("Nacionalidad");
-		lblNacionalidad.setBounds(236, 120, 69, 14);
+		lblNacionalidad.setBounds(236, 120, 145, 14);
 		panel.add(lblNacionalidad);
 		
 		JLabel lblDireccin = new JLabel("Direcci\u00F3n");
-		lblDireccin.setBounds(236, 176, 46, 14);
+		lblDireccin.setBounds(236, 176, 142, 14);
 		panel.add(lblDireccin);
 		
 		JLabel lblPoblacin = new JLabel("Poblaci\u00F3n");
-		lblPoblacin.setBounds(236, 230, 46, 14);
+		lblPoblacin.setBounds(236, 230, 145, 14);
 		panel.add(lblPoblacin);
 		
-		textField_5 = new JTextField();
-		textField_5.setBounds(236, 253, 142, 20);
-		panel.add(textField_5);
-		textField_5.setColumns(10);
-		String[] delincuentesnombres={"delincuente 1","delincuente 2","delincuente 3","delincuente 4","delincuente 5","delincuente 6","delincuente 7","delincuente 8","delincuente 9","delincuente 10"};
+		poblaciondelincuente = new JTextField();
+		poblaciondelincuente.setEditable(false);
+		poblaciondelincuente.setBounds(236, 253, 142, 20);
+		panel.add(poblaciondelincuente);
+		poblaciondelincuente.setColumns(10);
+		String[] delincuentesnombres=datosObj.getNombres().toArray(new String[datosObj.getNombres().size()]);
 		
 		JList list = new JList(delincuentesnombres);
-		
 		list.setBounds(0, 0, 1, 1);
-		
+		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		list.addListSelectionListener(new ListSelectionListener() {
+			
+			@Override
+			public void valueChanged(ListSelectionEvent e) {
+				System.out.println(list.getSelectedValue());
+				infodelincuentes = datos.getAllDelincuentes((String) list.getSelectedValue()).iterator();
+				while(infodelincuentes.hasNext()){
+					delincuente=infodelincuentes.next();
+					nombredelincuente.setText(delincuente[0]);
+					edaddelincuente.setText(delincuente[1]);
+					sexodelincuente.setText(delincuente[2]);
+					nacionalidaddelincuente.setText(delincuente[3]);
+					direcciondelincuente.setText(delincuente[4]);
+					poblaciondelincuente.setText(delincuente[5]);
+				}
+				
+			}
+		});
 		JScrollPane scrollPane = new JScrollPane(list);
 		scrollPane.setBounds(10, 11, 164, 296);
 		panel.add(scrollPane);
 		
+		JButton antecedentes= new JButton("Antecedetes >>");
+		antecedentes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panel3=new panelAntecedentes(delincuente[6],datosObj,delincuente[0]);
+				card.add(panel3, "panel3");
+				String delincuenteSeleccionado=(String)list.getSelectedValue();
+				CardLayout c=(CardLayout) card.getLayout();
+				c.show(card, "panel3");
+			}
+		});
+		antecedentes.setBounds(236, 284, 142, 23);
+		panel.add(antecedentes);
 	}
 }
