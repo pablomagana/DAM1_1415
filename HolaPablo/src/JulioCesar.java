@@ -9,10 +9,10 @@ public class JulioCesar {
 			for(int j=0;j<base.length;j++){
 				if(textocod[i]==base[j]){
 					if((j-k)<0){
-						System.out.print(base[base.length-k]);
-				}else{
-					System.out.print(base[j-k]);
-				}
+						System.out.print(base[base.length-k]);//da la vuelta y resta desde el final
+					}else{
+						System.out.print(base[j-k]);//da la letra que es menos una posicion de correr el abecedarioii
+					}
 			}
 		}
 		}
