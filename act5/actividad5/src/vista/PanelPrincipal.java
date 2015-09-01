@@ -2,33 +2,49 @@ package vista;
 
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
 import java.awt.Canvas;
+
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JCheckBoxMenuItem;
+
 import java.awt.Choice;
 import java.awt.Color;
+import java.util.Iterator;
+
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 
-public class panelPrincipal extends JPanel {
+import modelo.usuarios;
+
+public class PanelPrincipal extends JPanel {
 	private JPasswordField contrasena;
+	private usuarios usuariobd=new usuarios();
 
 	/**
-	 * Create the panel.
+	 * Se crea el panel que se aplicara a la ventana principal.
 	 */
-	public panelPrincipal() {
+	public PanelPrincipal() {
 		setLayout(null);
 		
-		JLabel label = new JLabel("New label");
-		label.setIcon(new ImageIcon("C:\\Users\\pablo\\Pictures\\ROBOT\\ROBOT4.jpg"));
-		label.setBounds(28, 42, 100, 100);
-		add(label);
+		JLabel foto = new JLabel("New label");
+		foto.setIcon(new ImageIcon("C:\\Users\\pablo\\Pictures\\ROBOT\\ROBOT4.jpg"));
+		foto.setBounds(28, 42, 100, 100);
+		add(foto);
 		
 		JComboBox usuario = new JComboBox();
-		usuario.setModel(new DefaultComboBoxModel(new String[] {"pamaub", "unpama", "maubpa"}));
+
+		//creamos un iterator con el resultado de la bd que nos permite recorrer tdos los usuarios
+		Iterator<String> recorredor=usuariobd.getUsuarios().iterator();
+		while(recorredor.hasNext()){
+			//añadimos cada valor del iterator al comboBox
+			usuario.addItem(recorredor.next().toString());
+		}
+		//fin iterator
+		
 		usuario.setBounds(28, 173, 100, 20);
 		add(usuario);
 		
@@ -46,11 +62,11 @@ public class panelPrincipal extends JPanel {
 		add(btnNewButton_1);
 		
 		JButton botonjuegos = new JButton("Juegos >");
-		botonjuegos.setBounds(233, 42, 171, 23);
+		botonjuegos.setBounds(162, 47, 171, 23);
 		add(botonjuegos);
 		
 		JButton botonperfil = new JButton("Perfil >");
-		botonperfil.setBounds(233, 81, 171, 23);
+		botonperfil.setBounds(162, 81, 171, 23);
 		add(botonperfil);
 
 	}

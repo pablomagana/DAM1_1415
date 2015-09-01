@@ -15,7 +15,7 @@ public class CoPablo extends JFrame implements ActionListener{
 	public JButton decodificar;
 	public JTextArea escribir;
 	public JTextArea texto;
-	Pablo p=new Pablo();
+	public Pablo p=new Pablo();
 	public static void main(String[] args){
 		new CoPablo();
 	}
